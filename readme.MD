@@ -374,3 +374,178 @@ Cuando te den la API:
 ✅ 7. Renderizas
 ✅ 8. Agregas eventos
 
+
+
+🌐 Guía Completa — Consumo de API + Botones + Filtros
+🎯 Objetivo
+
+Aprender a:
+
+✅ Consumir una API REST
+✅ Convertir respuesta JSON
+✅ Mostrar datos en pantalla (DOM)
+✅ Conectar botones
+✅ Implementar buscador
+✅ Filtrar información
+
+🔥 1. Consumir la API
+⚡ Estructura básica con fetch
+fetch("https://api.ejemplo.com/items")
+  .then(response => response.json())
+  .then(data => console.log(data));
+🚀 Versión PRO (async/await)
+async function cargarDatos() {
+  try {
+    const response = await fetch("https://api.ejemplo.com/items");
+    const data = await response.json();
+
+    console.log(data); // SIEMPRE revisar estructura
+    renderizarDatos(data);
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+🧠 2. Guardar datos globalmente
+
+Esto es CLAVE para filtros y búsqueda.
+
+let datosAPI = [];
+async function cargarDatos() {
+  const response = await fetch(URL);
+  const data = await response.json();
+
+  datosAPI = data;
+  renderizarDatos(datosAPI);
+}
+🧩 3. Mostrar datos en pantalla (DOM)
+🎯 HTML base
+<div id="container"></div>
+⚡ Render dinámico
+function renderizarDatos(lista) {
+  const container = document.querySelector("#container");
+
+  container.innerHTML = ""; // limpiar
+
+  lista.forEach(item => {
+    container.innerHTML += `
+      <div class="card">
+        <h3>${item.name}</h3>
+      </div>
+    `;
+  });
+}
+🖼️ Con imagen
+container.innerHTML += `
+  <div class="card">
+    <img src="${item.image}" />
+    <h3>${item.name}</h3>
+  </div>
+`;
+
+✅ Cambiar según API:
+
+item.title
+item.username
+item.photo
+🔎 4. Buscador en tiempo real
+🎯 HTML
+<input id="searchInput" placeholder="Buscar..." />
+⚡ JS
+const searchInput = document.querySelector("#searchInput");
+
+searchInput.addEventListener("input", e => {
+  const texto = e.target.value.toLowerCase();
+
+  const filtrados = datosAPI.filter(item =>
+    item.name.toLowerCase().includes(texto)
+  );
+
+  renderizarDatos(filtrados);
+});
+🏷️ 5. Botones por categoría
+🎯 HTML
+<button data-category="fire">🔥 Fuego</button>
+<button data-category="water">💧 Agua</button>
+<button data-category="grass">🌿 Planta</button>
+<button id="btnReset">Reset</button>
+⚡ JS
+const botones = document.querySelectorAll("button");
+
+botones.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const categoria = boton.dataset.category;
+
+    if (categoria) {
+      filtrarPorCategoria(categoria);
+    }
+  });
+});
+🔥 6. Filtrar por categoría
+function filtrarPorCategoria(categoria) {
+  const filtrados = datosAPI.filter(item =>
+    item.category.includes(categoria)
+  );
+
+  renderizarDatos(filtrados);
+}
+
+✅ Adaptable a:
+
+item.type
+item.genre
+item.role
+🔄 7. Botón Reset
+const btnReset = document.querySelector("#btnReset");
+
+btnReset.addEventListener("click", () => {
+  renderizarDatos(datosAPI);
+});
+⚡ 8. Flujo completo mental
+🧠 Cuando te ponen API en examen:
+
+✅ 1. fetch(URL)
+✅ 2. await response.json()
+✅ 3. console.log(data) 🔥
+✅ 4. Guardar en variable global
+✅ 5. renderizarDatos(data)
+✅ 6. Botones → addEventListener
+✅ 7. filter()
+✅ 8. renderizarDatos(filtrados)
+
+🧠 9. Métodos IMPORTANTÍSIMOS
+Método	Uso en examen
+forEach()	recorrer datos
+map()	transformar
+filter()	filtrar
+find()	buscar uno
+🎯 Ejemplo filter
+const filtrados = datosAPI.filter(item =>
+  item.name.includes("pik")
+);
+❌ 10. Manejo de errores
+try {
+  const response = await fetch(URL);
+} catch (error) {
+  console.error(error);
+}
+🎯 Preguntas típicas del profe 😈
+
+✔️ ¿Qué devuelve fetch? → Promise
+✔️ ¿Qué es JSON?
+✔️ ¿Qué hace await?
+✔️ ¿Qué hace filter()?
+✔️ ¿Qué es el DOM?
+✔️ ¿Qué hace addEventListener?
+
+💡 Tips Ninja 🥷😎
+
+✅ console.log(data) SIEMPRE
+✅ No memorizar API → entender estructura
+✅ Solo cambias:
+
+URL
+
+item.propiedad (name, title, etc.)
+
+NO rehaces toda la lógica.
