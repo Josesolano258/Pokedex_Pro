@@ -227,3 +227,150 @@ Proyecto desplegado en:
 
 Nombre del Estudiante
 Materia: Desarrollo de Software
+
+
+🌐 Proyecto: Consumo de API REST
+
+Descripción breve del proyecto.
+
+Aplicación web desarrollada en HTML, CSS y JavaScript, que consume datos desde una API REST y los muestra dinámicamente en pantalla.
+
+🎯 Objetivo
+
+La aplicación permite:
+
+✅ Consumir datos desde una API
+✅ Convertir respuestas JSON
+✅ Mostrar información en el DOM
+✅ Implementar búsqueda / filtros
+✅ Manejar asincronía
+
+🔗 API Utilizada
+
+Nombre de la API:
+[Coloca aquí la API del examen]
+
+Endpoint base:
+
+https://api.ejemplo.com/items
+
+📌 Ejemplo real:
+
+https://api.ejemplo.com/users
+https://api.ejemplo.com/products
+https://api.ejemplo.com/characters
+⚙️ Tecnologías
+
+HTML5
+
+CSS3
+
+JavaScript (Vanilla JS)
+
+Fetch API
+
+🚀 Guía Universal de Consumo de API
+🔥 1. Petición básica
+fetch("URL_AQUI")
+
+👉 Devuelve una Promise
+
+⚡ 2. Versión PRO con async/await
+async function cargarDatos() {
+  const response = await fetch("URL_AQUI");
+  const data = await response.json();
+
+  console.log(data);
+}
+
+✅ Cambias solo:
+
+"URL_AQUI"
+❌ 3. Con manejo de errores (EXAMEN LOVES THIS)
+async function cargarDatos() {
+  try {
+    const response = await fetch("URL_AQUI");
+    const data = await response.json();
+
+    console.log(data);
+    renderizarDatos(data);
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+🧩 Renderizar Datos en Pantalla
+🎯 Crear elementos dinámicamente
+function renderizarDatos(data) {
+  const container = document.querySelector("#container");
+
+  data.forEach(item => {
+    const div = document.createElement("div");
+    div.textContent = item.name;
+
+    container.appendChild(div);
+  });
+}
+
+✅ Cambias según la API:
+
+item.name
+item.title
+item.username
+item.productName
+🖼️ Mostrar imagen + texto
+div.innerHTML = `
+  <img src="${item.image}" />
+  <h3>${item.name}</h3>
+`;
+
+✅ Adaptable a:
+
+item.avatar
+item.thumbnail
+item.photo
+🔎 Buscador Universal
+input.addEventListener("input", e => {
+  const texto = e.target.value.toLowerCase();
+
+  const filtrados = data.filter(item =>
+    item.name.toLowerCase().includes(texto)
+  );
+
+  mostrarFiltrados(filtrados);
+});
+
+✅ Cambias:
+
+item.name
+
+por:
+
+item.title
+item.username
+item.product
+🧠 Métodos Clave que debes saber usar
+Método	Uso
+forEach()	Recorrer datos
+map()	Transformar
+filter()	Filtrar
+find()	Buscar uno
+⚡ Promise.all (cuando hay múltiples requests)
+const promises = ids.map(id =>
+  fetch(`${URL}/${id}`).then(r => r.json())
+);
+
+const results = await Promise.all(promises);
+🎯 Flujo Universal del Examen
+
+Cuando te den la API:
+
+✅ 1. Copias URL
+✅ 2. fetch
+✅ 3. await response.json()
+✅ 4. console.log(data) 🔥
+✅ 5. Revisas estructura
+✅ 6. Recorres array
+✅ 7. Renderizas
+✅ 8. Agregas eventos
+
