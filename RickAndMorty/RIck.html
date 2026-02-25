@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Explorador Rick and Morty</title>
+  <link rel="stylesheet" href="Rick.css">
+</head>
+<body>
+
+  <!-- Título principal -->
+  <h1>Explorador Rick and Morty</h1>
+
+
+  <!-- ============================= -->
+  <!-- SECCIÓN DE FILTROS / BÚSQUEDA -->
+  <!-- ============================= -->
+  <div class="filters">
+
+    <!-- Input de texto → Buscar por nombre -->
+    <input 
+      type="text" 
+      id="name" 
+      placeholder="Buscar por nombre">
+    
+    <!-- Select → Filtrar por estado -->
+    <select id="status">
+      <option value="">Estado</option>
+      <!-- value vacío = sin filtro -->
+
+      <option value="alive">Alive</option>
+      <option value="dead">Dead</option>
+      <option value="unknown">Unknown</option>
+    </select>
+
+    <!-- Select → Filtrar por especie -->
+    <select id="species">
+      <option value="">Especie</option>
+      <!-- value vacío = sin filtro -->
+
+      <option value="human">Human</option>
+      <option value="alien">Alien</option>
+    </select>
+
+    <!-- Botón → Ejecuta búsqueda -->
+    <button id="searchBtn">Buscar</button>
+
+    <!-- Botón → Limpia filtros -->
+    <button id="clearBtn">Limpiar</button>
+
+  </div>
+
+
+  <!-- ============================= -->
+  <!-- LOADER / SPINNER DE CARGA -->
+  <!-- ============================= -->
+  <div id="loader" class="loader hidden"></div>
+  <!-- 
+      hidden → está oculto por defecto
+      JS lo muestra mientras carga datos
+  -->
+
+
+  <!-- ============================= -->
+  <!-- RESULTADOS (CARDS) -->
+  <!-- ============================= -->
+  <div id="results" class="cards"></div>
+  <!-- 
+      Aquí JS inyecta dinámicamente
+      las cards de personajes
+  -->
+
+
+  <!-- ============================= -->
+  <!-- PAGINACIÓN -->
+  <!-- ============================= -->
+  <div class="pagination">
+
+    <!-- Botón página anterior -->
+    <button id="prevBtn">Anterior</button>
+
+    <!-- Texto de página actual -->
+    <span id="pageInfo"></span>
+
+    <!-- Botón página siguiente -->
+    <button id="nextBtn">Siguiente</button>
+
+  </div>
+
+
+  <!-- ============================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ============================= -->
+  <script src="Rick.js"></script>
+  <!-- 
+      Se coloca al final del body
+      para asegurar que el DOM cargó
+  -->
+
+</body>
+</html>
