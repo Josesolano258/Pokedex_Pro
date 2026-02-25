@@ -1,0 +1,102 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= VARIABLES ================= */
+:root {
+  --bg: #0f0f0f;
+  --card: #1b1b1b;
+  --accent: #ffcc00;
+  --text: #ffffff;
+}
+
+/* ================= BODY ================= */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ================= HEADER ================= */
+.header {
+  background: linear-gradient(135deg, #8b0000, #b22222);
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin-bottom: 10px;
+}
+
+#search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+/* ================= LAYOUT ================= */
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* ================= DETAILS ================= */
+.details {
+  width: 280px;
+  background: var(--card);
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid var(--accent);
+}
+
+/* ================= GRID ================= */
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+/* ================= CARD ================= */
+.card {
+  background: var(--card);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card img {
+    display: none;
+  }
+}

@@ -1,19 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Pokedex</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Pro v2.0</title>
+
+  <link rel="icon" href="img/favicon.png">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="title">POKE API</h1>
-    <div class="input" type="text" id="searchInput" aria-placeholder="Bucar Pokemon por nombre o ID"></div>
-    <button class="button" id="searchBtn">Buscar</button>
 
-    
+  <!-- ================= HEADER ================= -->
+  <header class="header">
 
+    <!-- Título principal -->
+    <h1>POKE API</h1>
 
-    <script src="styles.css"></script>
+    <!-- Input de búsqueda -->
+    <!-- id="search" → lo usamos luego en JS -->
+    <input 
+      type="text" 
+      id="search" 
+      placeholder="Buscar Pokémon por nombre o ID..."
+    >
+
+  </header>
+
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <main class="layout">
+
+    <!-- Panel lateral de detalles -->
+    <!-- Aquí mostraremos info del Pokémon seleccionado -->
+    <aside class="details" id="details">
+      <p>Selecciona un Pokémon</p>
+    </aside>
+
+    <!-- Grid donde se renderizan las tarjetas -->
+    <!-- id="grid" → JS inserta dinámicamente las cards -->
+    <section class="grid" id="grid">
+      <p class="loading">Cargando Pokémons...</p>
+    </section>
+
+  </main>
+
+  <!-- Archivo JS (al final para que cargue después del HTML) -->
+  <script src="app.js"></script>
+
 </body>
 </html>

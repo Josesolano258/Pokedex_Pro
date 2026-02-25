@@ -1,133 +1,229 @@
-🧭 Pokédex Pro v2.0
+# 🚀 Pokédex Pro v2.0
 
-Trainer: Cristian David Díaz Tovar
-Materia: Desarrollo de Software
+Aplicación web desarrollada para el taller / examen de **Consumo de APIs** en la materia **Desarrollo de Software**.
 
-"El código limpio no es el que funciona, sino el que otro desarrollador puede entender y mejorar sin dolor."
+La app consume datos en tiempo real desde la **PokeAPI**, mostrando información detallada de los **151 Pokémon originales**, permitiendo búsqueda, visualización de estadísticas y una experiencia UX/UI moderna.
 
-🎯 Objetivo
+---
 
-Construir una aplicación web funcional que consuma la PokeAPI, permitiendo la visualización, filtrado y análisis de estadísticas de los 151 Pokémon originales, aplicando principios de Clean Code y UX/UI moderno.
+# 🎯 Objetivo del Proyecto
 
-🧩 Características Principales
+Construir una aplicación web que demuestre:
 
-✅ Consumo de API REST (PokeAPI)
-✅ Carga eficiente con Promise.all()
-✅ Buscador en tiempo real (Nombre / ID)
-✅ Panel de detalles dinámico por tipo
-✅ Conversión de unidades (API → lectura humana)
-✅ Diseño responsivo (Mobile + Desktop)
-✅ Lazy loading de imágenes
-✅ Identidad visual temática Pokémon
+✔ Consumo de API REST  
+✔ Manipulación dinámica del DOM  
+✔ Carga eficiente de datos  
+✔ Filtrado en tiempo real  
+✔ Diseño responsivo  
+✔ Clean Code  
 
-🛠️ Requerimientos Técnicos
-🎨 Frontend & Estilos (CSS)
+---
 
-Diseño Responsivo
-La aplicación funciona correctamente en dispositivos móviles y escritorio.
+# 🛠 Tecnologías Utilizadas
 
-Tipografía Temática
+| Tecnología | Uso |
+|------------|-----|
+| HTML5 | Estructura semántica |
+| CSS3 | Estilos + Responsive Design |
+| JavaScript (Vanilla) | Lógica y consumo API |
+| PokeAPI | Fuente de datos |
 
-'Press Start 2P' → Títulos
+---
 
-'Montserrat' → Texto
-Implementadas mediante @import en CSS.
+# ⚡ Funcionalidades Implementadas
 
-Identidad Visual
+✅ Consumo de la **PokeAPI**  
+✅ Carga de los **151 Pokémon originales**  
+✅ Uso de `Promise.all()` para optimización  
+✅ Buscador en tiempo real (nombre / ID)  
+✅ Renderizado dinámico de tarjetas  
+✅ Panel de detalles interactivo  
+✅ Conversión de unidades (kg / metros)  
+✅ Barras de estadísticas dinámicas  
+✅ Colores dinámicos por tipo  
+✅ Lazy loading de imágenes  
+✅ Diseño responsivo  
 
-Header con degradado + efecto Glassmorphism
+---
 
-Favicon representativo (Pokébola)
+# 🌐 Consumo de API
 
-Optimización en Móviles
+Endpoint utilizado:
+
+
+https://pokeapi.co/api/v2/pokemon/{id}
+
+
+Ejemplo:
+
+```javascript
+fetch("https://pokeapi.co/api/v2/pokemon/25")
+🚀 Optimización con Promise.all()
+
+Se realizan 151 peticiones en paralelo:
+
+const requests = [];
+
+for (let i = 1; i <= 151; i++) {
+  requests.push(fetch(url).then(r => r.json()));
+}
+
+const pokemons = await Promise.all(requests);
+✅ Ventajas:
+
+✔ Reduce tiempo de carga
+✔ Mejora rendimiento
+✔ Evita peticiones secuenciales
+
+🔎 Buscador en Tiempo Real
+
+Evento utilizado:
+
+input
+
+Filtrado dinámico:
+
+pokemons.filter(pokemon =>
+  pokemon.name.includes(value) ||
+  pokemon.id.toString().includes(value)
+);
+✅ Beneficios:
+
+✔ UX fluida
+✔ Sin recargar página
+✔ Feedback inmediato
+
+🎨 Diseño & UX/UI
+
+Características visuales:
+
+✨ Header con degradado
+✨ Glassmorphism / Blur
+✨ Tipografía temática
+✨ Tarjetas interactivas
+✨ Efectos hover
+✨ Colores dinámicos
+
+🔤 Tipografías
+Fuente	Uso
+Press Start 2P	Títulos
+Montserrat	Texto
+
+Importadas mediante:
+
+@import url(...)
+🎨 Colores Dinámicos por Tipo
+
+Ejemplo:
+
+const typeColors = {
+  fire: "#f08030",
+  water: "#6890f0",
+  grass: "#78c850"
+};
+
+Aplicado a:
+
+✔ Bordes del panel
+✔ Barras de estadísticas
+
+📊 Manejo de Datos (Conversión)
+
+La API devuelve:
+
+Campo	Unidad API	Conversión
+weight	hectogramos	kg (/10)
+height	decímetros	metros (/10)
+
+Ejemplo:
+
+const weightKg = pokemon.weight / 10;
+const heightM = pokemon.height / 10;
+📱 Responsive Design
+
+Diseño adaptable a:
+
+✔ Desktop
+✔ Tablet
+✔ Mobile
+
+📌 Regla clave:
 
 En pantallas < 600px:
 
-Cards sin imagen
+Se ocultan imágenes en cards
 
-Solo Nombre + ID
+Se muestra solo nombre + ID
 
-⚙️ Lógica de Programación (JavaScript)
+@media (max-width: 600px) {
+  .card img {
+    display: none;
+  }
+}
+🖼 Lazy Loading
 
-Carga Eficiente
+Optimización de imágenes:
 
-Promise.all([...])
+<img loading="lazy">
+✅ Beneficios:
 
-Peticiones paralelas de los 151 Pokémon.
+✔ Mejora rendimiento
+✔ Reduce consumo de datos
+✔ Mejor experiencia móvil
 
-Buscador en Tiempo Real
+🧠 Conceptos Clave Aplicados
 
-Filtrado dinámico sin recargar la página
+✔ Fetch API
+✔ async / await
+✔ Promise.all()
+✔ DOM Manipulation
+✔ Event Listeners
+✔ filter()
+✔ map()
+✔ Template Strings
+✔ Lazy Loading
+✔ Responsive Design
+✔ Clean Code
 
-Búsqueda por Nombre o ID
+📂 Estructura del Proyecto
+pokedex-pro/
+│
+├── index.html
+├── README.md
+│
+├── css/
+│   └── styles.css
+│
+├── js/
+│   └── app.js
+│
+└── img/
+🚀 Cómo Ejecutar
 
-Dinamicidad UI
+1️⃣ Clonar repositorio:
 
-Colores del panel de detalles según tipo principal
+git clone https://github.com/usuario/pokedex-pro.git
 
-🔥 Fuego → Naranja
+2️⃣ Abrir index.html
 
-💧 Agua → Azul
+(No requiere backend)
 
-🌿 Planta → Verde
+🌐 Deploy
 
-Manejo de Datos
-Conversión de unidades:
+Proyecto desplegado en:
 
-Hectogramos → Kilogramos (kg)
+👉 Vercel / GitHub Pages
 
-Decímetros → Metros (m)
+✅ Criterios Académicos Cumplidos
 
-📁 Estructura del Proyecto
-📦 pokedex-pro-v2
- ┣ 📜 index.html
- ┣ 🎨 style.css
- ┣ ⚙️ app.js
- ┣ 🖼️ img/
- ┗ ⭐ favicon.ico
-Archivo	Descripción
-index.html	Estructura semántica
-style.css	Variables, estilos, media queries
-app.js	Consumo API, renderizado, búsqueda
-🚀 Optimización Implementada
+✔ Funcionalidad sin errores
+✔ Promise.all implementado
+✔ Lazy loading activo
+✔ Responsive correcto
+✔ UX/UI moderno
+✔ Clean Code
 
-Promise.all() → Carga paralela
+✨ Autor
 
-loading="lazy" → Imágenes
-
-Media Queries → UX móvil
-
-Variables CSS → Escalabilidad
-
-📊 Criterios de Evaluación
-Criterio	Descripción	Peso
-Funcionalidad	Buscador + selección sin errores	40%
-Diseño (UI)	Fuentes + estilos dinámicos	30%
-Optimización	Promise.all + lazy loading	20%
-Responsive Design	Adaptación móvil correcta	10%
-🌐 Entregables
-
-1️⃣ Enlace al repositorio de GitHub
-2️⃣ Deploy activo en:
-
-Vercel
-
-GitHub Pages
-
-🧪 Tecnologías Utilizadas
-
-HTML5
-
-CSS3
-
-JavaScript (Vanilla JS)
-
-PokeAPI
-
-💡 Posibles Mejoras Futuras
-
-✨ Filtros por tipo
-✨ Comparador de Pokémon
-✨ Modo oscuro 🌙
-✨ Animaciones UI
-✨ Favoritos ⭐
+Nombre del Estudiante
+Materia: Desarrollo de Software

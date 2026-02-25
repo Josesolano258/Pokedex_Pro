@@ -1,14 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="examen.css">
-    <title>=Estructura Examen Javascript</title>
-</head>
-<body>
-    
+  <!-- Configuración básica -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="examen.js"></script>
+  <!-- Título -->
+  <title>Examen Consumo API</title>
+
+  <!-- Favicon opcional -->
+  <!-- <link rel="icon" href="img/favicon.png"> -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="examen.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <h1>Consumo de API 🚀</h1>
+
+    <!-- Buscador -->
+    <input 
+      type="text" 
+      id="search" 
+      placeholder="Buscar..."
+    >
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="layout">
+
+    <!-- Panel de detalles -->
+    <aside id="details" class="details">
+      <p>Selecciona un elemento</p>
+    </aside>
+
+    <!-- Grid / Lista -->
+    <section id="grid" class="grid">
+      <p class="loading">Cargando datos...</p>
+    </section>
+
+  </main>
+
+  <!-- JS -->
+  <script src="examen.js"></script>
+
 </body>
 </html>
